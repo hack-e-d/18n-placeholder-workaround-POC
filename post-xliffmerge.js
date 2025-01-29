@@ -1,56 +1,39 @@
 const fs = require('fs');
-const xml2js = require('xml2js');
 
-const parser = new xml2js.Parser();
-const builder = new xml2js.Builder();
+function replacePlaceHolderWithInterpolation(xliffFilePath) {
+  try {
+    const data = fs.readFileSync(xliffFilePath, 'utf-8');
 
-fs.readFile('src/assets/localization/messages.ar.xlf', 'utf-8', (err, data) => {
-  if (err) {
-    console.error('Error reading file:', err);
-    return;
+    const lines = data.split('\n');
+
+    let newLine = [];
+
+    lines.forEach(line => {
+
+      if (line.includes('<x id="INTERPOLATION') && !line.includes('equiv-text="{{')) {
+        line = line.replace(/INTERPOLATION/g, 'PH');
+        console.log("Replaced line : " + line);
+      }
+
+      newLine.push(line);
+    });
+
+    const newData = newLine.join('\n');
+
+    console.log(newData);
+
+    fs.writeFileSync(xliffFilePath, newData, 'utf-8');
+
+    console.log(`Successfully replaced "PH" with "INTERPOLATION" in ${xliffFilePath}`);
+  } catch (err) {
+    console.error(`Error processing ${xliffFilePath}:`, err);
   }
+}
 
-  parser.parseString(data, (err, result) => {
-    if (err) {
-      console.error('Error parsing XML:', err);
-      return;
-    }
+const langs = ["en", "fr", "de", "ar"];
+for (let i = 0; i < langs.length; i++) {
+  replacePlaceHolderWithInterpolation(`src/assets/localization/messages.${langs[i]}.xlf`);
+}
 
-    const xliff = result['xliff'];
-    const transUnits = xliff.file[0].body[0]['trans-unit'];
 
-    let no = 1;
-    transUnits.forEach(unit => {
-      console.log("Unit number : " + no++);
-      // Access individual elements within the unit
-      const source = unit.source[0].x // Access source text
-      const target = unit.target[0].x; // Access target text
-      console.log("source and target");
-      console.log(source);
-      console.log(target);
-      if (true) {
-        if(!source[0].$['equiv-text'].includes("{{")) {
-          source.forEach(s => {
-            s.$.id = s.$.id.replace("INTERPOLATION", "PH");
-            console.log(s);
-          });
 
-          target.forEach(t => {
-            t.$.id = t.$.id.replace("INTERPOLATION", "PH");
-            console.log(t);
-          });
-        }
-      }
-    });
-
-    const newXml = builder.buildObject(result);
-
-    fs.writeFile('src/assets/localization/messages.ar.xlf', newXml, 'utf-8', (err) => {
-      if (err) {
-        console.error('Error writing file:', err);
-      } else {
-        console.log('File replaced successfully!');
-      }
-    });
-  });
-});

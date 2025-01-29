@@ -9,7 +9,7 @@
     "test": "ng test",
     "i18n-extraction": "ng extract-i18n --output-path src/assets/localization",
     "xliffmerge": "xliffmerge --verbose --profile xliffmerge.json",
-    "prexliffmerge": "node ./pre-xlifmerge.js",
+    "prexliffmerge": "node ./pre-xliffmerge.js",
     "postxliffmerge": "node ./post-xliffmerge.js"
   },
   "private": true,
