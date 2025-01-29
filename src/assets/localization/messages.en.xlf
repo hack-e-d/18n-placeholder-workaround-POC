@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template" target-language="en">
+    <body>
+      <trans-unit id="Title-html" datatype="html">
+        <source>Testing the working of angular localize. Testing done by <x id="INTERPOLATION" equiv-text="{{placeHolder}}"/> in application <x id="INTERPOLATION_1" equiv-text="{{appName}}"/></source><target state="final">Testing the working of angular localize. Testing done by <x id="INTERPOLATION" equiv-text="{{placeHolder}}"/> in application <x id="INTERPOLATION_1" equiv-text="{{appName}}"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/post/post.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="appTitle" datatype="html">
+        <source>Testing the working of angular localize. Testing done by <x id="INTERPOLATION" equiv-text="this.placeHolder"/> in application <x id="INTERPOLATION_1" equiv-text="this.appName"/></source><target state="final">Testing the working of angular localize. Testing done by <x id="INTERPOLATION" equiv-text="this.placeHolder"/> in application <x id="INTERPOLATION_1" equiv-text="this.appName"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/post/post.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

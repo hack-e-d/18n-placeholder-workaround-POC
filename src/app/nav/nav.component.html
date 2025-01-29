@@ -1,0 +1,13 @@
+<nav>
+  <div class="row p-1">
+    <div class="col-9"></div>
+    <div class="col-3">
+      <select class="custom-select" [(ngModel)]="selectedValue" (ngModelChange)="changeLang()">
+        <option value="en">English</option>
+        <option value="de">Deutsch</option>
+        <option value="ar">Arabic</option>
+      </select>
+    </div>
+    <div>{{selectedValue}}</div>
+  </div>
+</nav>
