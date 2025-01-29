@@ -13,5 +13,9 @@ export class PostComponent {
 
   public appName = "i18n-POC-1"
 
+  public emptyPlaceholder = $localize`:@@appTitle:${this.placeHolder}`;
+
   public combinedMessage = $localize`:@@appTitle:Testing the working of angular localize. Testing done by ${this.placeHolder} in application ${this.appName}`;
+
+  public combinedMessage1 = $localize`:@@appTitle-empty:Testing the working of angular localize. Testing done by developer in application i18n POC`;
 }

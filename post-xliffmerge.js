@@ -12,15 +12,12 @@ function replacePlaceHolderWithInterpolation(xliffFilePath) {
 
       if (line.includes('<x id="INTERPOLATION') && !line.includes('equiv-text="{{')) {
         line = line.replace(/INTERPOLATION/g, 'PH');
-        console.log("Replaced line : " + line);
       }
 
       newLine.push(line);
     });
 
     const newData = newLine.join('\n');
-
-    console.log(newData);
 
     fs.writeFileSync(xliffFilePath, newData, 'utf-8');
 
