@@ -13,7 +13,7 @@ export class PostComponent {
 
   public appName = "i18n-POC-1"
 
-  public emptyPlaceholder = $localize`:@@appTitle:${this.placeHolder}`;
+  public emptyPlaceholder = $localize`:@@appTitle-placeholder:${this.placeHolder}`;
 
   public combinedMessage = $localize`:@@appTitle:Testing the working of angular localize. Testing done by ${this.placeHolder} in application ${this.appName}`;
 

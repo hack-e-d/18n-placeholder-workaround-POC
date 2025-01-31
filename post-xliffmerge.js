@@ -27,9 +27,9 @@ function replacePlaceHolderWithInterpolation(xliffFilePath) {
   }
 }
 
-const langs = ["en", "fr", "de", "ar"];
+const langs = [".en", ".fr", ".de", ".ar", ""];
 for (let i = 0; i < langs.length; i++) {
-  replacePlaceHolderWithInterpolation(`src/assets/localization/messages.${langs[i]}.xlf`);
+  replacePlaceHolderWithInterpolation(`src/assets/localization/messages${langs[i]}.xlf`);
 }
 
 
